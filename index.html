@@ -110,13 +110,21 @@
                 Last known location:
               </small>
             </p>
-            <p class="card-text text-light" x-text="personagemSelecionado ? personagemSelecionado.location.name : 'Last known location: '"></p>
+            
+            <p class="card-text text-light"
+              x-text="personagemSelecionado ? personagemSelecionado.location.name : 'Last known location: '"
+            ></p>
+           
             <p class="card-text">
               <small class="text-body-secondary text-secondary">
                 First seen in:
               </small>
             </p>
-            <p class="card-text text-light" x-text="personagemSelecionado ? personagemSelecionado.origin.name : 'First seen in: '"></p>
+            
+            <p class="card-text text-light" 
+              x-text="personagemSelecionado ? personagemSelecionado.origin.name : 'First seen in: '">
+            </p>
+            
           </div>
         </div>
       </div>
@@ -125,19 +133,28 @@
     
     <div class="dropdown epsódios mt-3">
       <button class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3"
-        type="button" data-bs-toggle="dropdown" aria-expanded="false">Ver epsódios</button>
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Ver epsódios
+      </button>
       <ul class="dropdown-menu col-md-12">
         <li><p class="dropdown-item" href="#">epsódios</p></li>
       </ul>
     </div>
 
     <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+      <button class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3" 
+        type="button" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false">
         Conhecer os vizinhos
       </button>
+      
       <ul class="dropdown-menu col-md-12">
         <li><p class="dropdown-item" href="#">Vizinho</p></li>
       </ul>
+      
     </div>
     
   </div>
