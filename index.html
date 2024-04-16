@@ -23,7 +23,7 @@
     
     const app = () =>{
       return {
-          dadosDosPersonas=[],
+        dadosDosPersonas:[], 
           init() {
             axios.get('https://rickandmortyapi.com/api/character')
             .then(function (resposta) {
@@ -81,7 +81,9 @@
           </button>
           <ul class="dropdown-menu col-md-12">
             <template x-for="personagem in dadosDosPersonas">
-              <li class="dropdown-item col-md-12" x-text="personagem.name" ></li>
+              <li class="dropdown-item col-md-12" x-text="personagem.name">
+                
+              </li>
             </template>
           </ul>
         </div>
