@@ -16,27 +16,34 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
     crossorigin="anonymous">
   </script>
-  
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="//unpkg.com/alpinejs" defer></script>
 
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
-    axios.get('https://rickandmortyapi.com/api/character')
-      .then(function (resposta) {
-        console.log(resposta.data);
-      })
-      .catch(function (erro) {
-        console.error('Erro ao fazer requisição:', erro);
-      });
-
+    
+    const app = () =>{
+      return {
+          dadosDosPersonas=[],
+          init() {
+            axios.get('https://rickandmortyapi.com/api/character')
+            .then(function (resposta) {
+              this.dadosDosPersonas = resposta.data.results
+              console.log(this.dadosDosPersonas);
+            })
+            .catch(function (error) {
+              this.dadosDosPersonas = ['Algo deu errado!'];
+              console.log(error);
+            })
+          }
+      }
+    }
     
   </script>
-
 </head>
 
 <body style="background-color: #272B32;">
-  <div class="container">
+  <div x-data="app()" 
+    class="container">
     <div class="row d-flex justify-content-md-center mt-5 ">
       <div class="col-md-6">
         
@@ -48,12 +55,13 @@
           Rick And Morty Search
         </h1>
         
-        <div 
+        <div
           class="
           personagem
           dropdown
           mt-3">
           <button 
+            
             class="
               btn
               btn-primary 
@@ -72,12 +80,12 @@
             Sobre quem você quer saber?
           </button>
           <ul class="dropdown-menu col-md-12">
-            <li><p class="dropdown-item col-md-12" href="#">Personagem</p></li>
+            <template x-for="personagem in dadosDosPersonas">
+              <li class="dropdown-item col-md-12" x-text="personagem.name" ></li>
+            </template>
           </ul>
-        
-        
         </div>
-
+  
         <div 
           class="
           CardsobrePersonagem
@@ -87,7 +95,8 @@
           bg-secondary
           ">
           <div class="row g-0 ">
-            <img          src="https://th.bing.com/th/id/OIP.a2EaqiE8mLdoo4uwSyVsxwHaJA?w=164&h=198&c=7&r=0&o=5&pid=1.7" 
+            <img 
+              src="https://th.bing.com/th/id/OIP.a2EaqiE8mLdoo4uwSyVsxwHaJA?w=164&h=198&c=7&r=0&o=5&pid=1.7" 
               class="col-md-5 img-fluid rounded-start"
               alt="..."
             >
@@ -104,7 +113,8 @@
                     spinner-grow
                     text-success
                     spinner-grow-sm"
-                    role="status">
+                    role="status"
+                  >
                     <span class="visually-hidden"></span>
                   </div>
                   
