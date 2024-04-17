@@ -3,6 +3,7 @@ const app = () => {
     dadosDosPersonas: [],
     personagemSelecionado: null,
     episodiosSelecionado: [],
+    vizinhoSelecionado: [],
     urlPadrao: "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
     init() {
       axios.get('https://rickandmortyapi.com/api/character')
@@ -15,15 +16,13 @@ const app = () => {
         })
     },
     selecionarPersonagem(personagem) {
+
       this.personagemSelecionado = personagem;
       console.log(this.personagemSelecionado);
 
       
       this.episodiosSelecionado = [];
-      let episodios = personagem.episode;
-      console.log(episodios);
-
-      for (episodio of episodios) {
+      for (episodio of personagem.episode) {
         axios.get(episodio)
           .then((resposta) => {
             this.episodiosSelecionado.push("Ep "+resposta.data.id+" - "+resposta.data.name);
@@ -32,7 +31,23 @@ const app = () => {
             console.log(error);
           })
       }
-      console.log(this.episodiosSelecionado);
+
+      this.vizinhoSelecionado = [];    
+      axios.get(personagem.location.url)
+      .then((resposta) => {
+            for (vizinho of resposta.data.residents) {
+                axios.get(vizinho)
+                  .then((resposta2) => {
+                    this.vizinhoSelecionado.push(resposta2.data.name);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  })
+              }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
     }
   }
 }

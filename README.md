@@ -3,8 +3,8 @@
 Este repositório contém a atividade "Rick And Morty Search" da disciplina de Desenvolvimento Web 1, ministrada pelo Professor Paulo Reis no curso de BSI da UNIME.
 
 ## Tecnologias utilizadas
-- FrontEnd: Bootstrap
-- BackEnd: AlpineJS
+- FrontEnd: Bootstrap e AlpineJS
+- Backend: JavaScript
 - requisições HTTP: Axios
 
   

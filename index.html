@@ -17,15 +17,22 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   
   <script src="script.js"></script>
+
+  <style>
+    .scrollable-dropdown {
+      max-height: 200px;
+      overflow-y: auto; 
+    }
+  </style>
   
 </head>
 
 <body style="background-color: #272B32;">
   <div class="container">
-    <div class="row d-flex justify-content-md-center mt-5 ">
+    <div class="row d-flex justify-content-md-center mt-1 ">
       <div  x-data="app()" class="col-md-6">
         
-        <h1 class="fs-1 text-center text-light">Rick And Morty Search</h1>
+        <h1 class="fs-2 text-center text-light">Rick And Morty Search</h1>
         
         <div class="dropdown mt-3">
           
@@ -38,7 +45,7 @@
             aria-expanded="false">
           </button>
           
-          <ul class="dropdown-menu col-md-12">
+          <ul class="scrollable-dropdown dropdown-menu col-md-12">
             <template x-for="personagem in dadosDosPersonas">
               <li class="dropdown-item col-md-12" @click="selecionarPersonagem(personagem)">  
                 <span x-text="personagem.name"></span>
@@ -96,7 +103,7 @@
                 </p>
                 
                 <p class="card-text text-light"
-                  x-text="personagemSelecionado ? personagemSelecionado.location.name : 'Last known location: '">
+                  x-text="personagemSelecionado ? personagemSelecionado.location.name : ' '">
                 </p>
                
                 <p class="card-text">
@@ -106,7 +113,7 @@
                 </p>
                 
                 <p class="card-text text-light" 
-                  x-text="personagemSelecionado ? personagemSelecionado.origin.name : 'First seen in: '">
+                  x-text="personagemSelecionado ? personagemSelecionado.origin.name : ''">
                 </p>
                 
               </div>
@@ -123,7 +130,7 @@
             aria-expanded="false">
             Ver epsódios
           </button>
-          <ul class="dropdown-menu col-md-12">
+          <ul class="scrollable-dropdown dropdown-menu col-md-12">
             <template x-for="episodio in episodiosSelecionado">
               <li class="dropdown-item col-md-12">  
                 <span x-text="episodio"></span>
@@ -132,27 +139,24 @@
           </ul>
           
         </div>
-        
-        <ul class="dropdown-menu col-md-12">
-          <template x-for="personagem in dadosDosPersonas">
-            <li class="dropdown-item col-md-12" @click="selecionarPersonagem(personagem)">  
-              <span x-text="personagem.name"></span>
-            </li>
-          </template>
-        </ul>
+
         <div class="dropdown mt-3">
-          
-          <button class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3" 
-            type="button" 
-            data-bs-toggle="dropdown" 
+
+          <button
+            class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3"
+            type="button"
+            data-bs-toggle="dropdown"
             aria-expanded="false">
-            Conhecer os vizinhos
+            Ver vizinhança
           </button>
-          
-          <ul class="dropdown-menu col-md-12">
-            <li><p class="dropdown-item" href="#">Vizinho</p></li>
+          <ul class="scrollable-dropdown dropdown-menu col-md-12">
+            <template x-for="vizinho in vizinhoSelecionado">
+              <li class="dropdown-item col-md-12">  
+                <span x-text="vizinho"></span>
+              </li>
+            </template>
           </ul>
-          
+
         </div>
         
       </div>
