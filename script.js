@@ -26,7 +26,7 @@ const app = () => {
       for (episodio of episodios) {
         axios.get(episodio)
           .then((resposta) => {
-            this.episodiosSelecionado.push("Ep:"+resposta.data.id+" - "+resposta.data.name);
+            this.episodiosSelecionado.push("Ep "+resposta.data.id+" - "+resposta.data.name);
           })
           .catch((error) => {
             console.log(error);
