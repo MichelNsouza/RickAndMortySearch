@@ -120,17 +120,26 @@
             class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3"
             type="button"
             data-bs-toggle="dropdown"
-            aria-expanded="false"
-            @click="selecionarEpisodios(personagem)">
+            aria-expanded="false">
             Ver epsódios
           </button>
-          <template x-for="episodio in dadosDosPersonaEpisodios">
-            <ul class="dropdown-menu col-md-12">
-              <span x-text="episodio.name"></span>
-            </ul>
-          </template>
+          <ul class="dropdown-menu col-md-12">
+            <template x-for="episodio in episodiosSelecionado">
+              <li class="dropdown-item col-md-12">  
+                <span x-text="episodio"></span>
+              </li>
+            </template>
+          </ul>
+          
         </div>
         
+        <ul class="dropdown-menu col-md-12">
+          <template x-for="personagem in dadosDosPersonas">
+            <li class="dropdown-item col-md-12" @click="selecionarPersonagem(personagem)">  
+              <span x-text="personagem.name"></span>
+            </li>
+          </template>
+        </ul>
         <div class="dropdown mt-3">
           
           <button class="btn btn-secondary dropdown-toggle col-md-12 d-flex justify-content-between align-items-center p-3" 
