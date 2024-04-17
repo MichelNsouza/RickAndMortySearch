@@ -17,7 +17,9 @@ const app = () => {
     selecionarPersonagem(personagem) {
       this.personagemSelecionado = personagem;
       console.log(this.personagemSelecionado);
-      thi = [];
+
+      
+      this.episodiosSelecionado = [];
       let episodios = personagem.episode;
       console.log(episodios);
 
