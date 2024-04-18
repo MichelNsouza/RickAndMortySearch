@@ -14,6 +14,18 @@ const app = () => {
           axios.get(`https://rickandmortyapi.com/api/character?page=${i}`).then((resposta2) => {
             
             this.dadosDosPersonas = this.dadosDosPersonas.concat(resposta2.data.results);
+
+            this.dadosDosPersonas.sort((a, b) => {
+              const nomeA = a.name.toUpperCase();
+              const nomeB = b.name.toUpperCase();
+              if (nomeA < nomeB) {
+                return -1;
+              }
+              if (nomeA > nomeB) {
+                return 1;
+              }
+              return 0;
+            });
             
           }).catch((error) => {
             
