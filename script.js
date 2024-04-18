@@ -6,14 +6,27 @@ const app = () => {
     vizinhoSelecionado: [],
     urlPadrao: "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
     init() {
-      axios.get('https://rickandmortyapi.com/api/character')
-        .then((resposta) => {
-          this.dadosDosPersonas = resposta.data.results;
-          console.log(this.dadosDosPersonas);
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+      
+      axios.get('https://rickandmortyapi.com/api/character').then((resposta) => {
+        
+        for(let i = 1; i < resposta.data.info.pages; i++){
+          
+          axios.get(`https://rickandmortyapi.com/api/character?page=${i}`).then((resposta2) => {
+            
+            this.dadosDosPersonas = this.dadosDosPersonas.concat(resposta2.data.results);
+            
+          }).catch((error) => {
+            
+            console.log(error);
+            
+          })
+        }
+
+      }).catch((error) => {
+        
+        console.log(error);
+        
+      })
     },
     selecionarPersonagem(personagem) {
 
@@ -51,4 +64,3 @@ const app = () => {
     }
   }
 }
-
