@@ -9,5 +9,5 @@ Este repositório contém a atividade "Rick And Morty Search" da disciplina de D
 
   
 ## Deploy
-- [Git Pages](https://michelnsouza.github.io/atividade-complementar-web-1/)
+- [Git Pages](https://michelnsouza.github.io/RickAndMortySearch/)
 
